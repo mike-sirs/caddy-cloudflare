@@ -4,7 +4,7 @@ ENV VAR_XCADDY=0.4.4
 ENV VAR_CADDY=2.9.0
 
 RUN apk update && \
-    apk add --no-cache build-base wget && \
+    apk add --no-cache build-base wget git && \
     wget https://github.com/caddyserver/xcaddy/releases/download/v${VAR_XCADDY}/xcaddy_${VAR_XCADDY}_linux_amd64.tar.gz && \
     tar -xzvf xcaddy_${VAR_XCADDY}_linux_amd64.tar.gz -C /usr/local/bin && \
     chmod +x /usr/local/bin/xcaddy && \
