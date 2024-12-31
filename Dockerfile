@@ -15,7 +15,7 @@ FROM alpine:edge
 
 RUN echo "net.core.rmem_max=2500000" > /etc/sysctl.conf
 
-COPY --from=caddy_builder --link /usr/bin/caddy /usr/bin/caddy
+COPY --from=caddy_builder --link /go/caddy /usr/bin/caddy
 
 WORKDIR /var/www/public
 
