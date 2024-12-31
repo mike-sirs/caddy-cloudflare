@@ -5,7 +5,7 @@ ENV VAR_CADDY=2.9.0
 
 RUN apk update && \
     apk add --no-cache build-base wget && \
-    wget https://github.com/caddyserver/xcaddy/releases/download/v${VAR_XCADDY}/xcaddy_${VAR_XCADDY}_linux_amd64.ta{.gz && \
+    wget https://github.com/caddyserver/xcaddy/releases/download/v${VAR_XCADDY}/xcaddy_${VAR_XCADDY}_linux_amd64.tar.gz && \
     tar -xzvf xcaddy_${VAR_XCADDY}_linux_amd64.tar.gz -C /usr/local/bin && \
     chmod +x /usr/local/bin/xcaddy && \
     CGO_ENABLED=1 xcaddy build $VAR_CADDY \
