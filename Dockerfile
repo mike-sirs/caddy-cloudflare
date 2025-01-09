@@ -1,7 +1,7 @@
 FROM golang:1.23-alpine AS caddy_builder
 
 ENV VAR_XCADDY=0.4.4
-ENV VAR_CADDY=2.9.0
+ENV VAR_CADDY=2.9.1
 
 RUN apk update && \
     apk add --no-cache build-base wget git && \
