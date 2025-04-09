@@ -1,4 +1,4 @@
-FROM golang:1.24-alpine AS caddy_builder
+FROM golang:1.23-alpine AS caddy_builder
 
 ENV VAR_XCADDY=0.4.4
 ENV VAR_CADDY=2.10.0-beta.4
