@@ -1,7 +1,10 @@
-FROM golang:1.23-alpine AS caddy_builder
+FROM golang:1.24-alpine3.20 AS caddy_builder
 
 ENV VAR_XCADDY=0.4.4
 ENV VAR_CADDY=2.10.0-beta.4
+ENV XCADDY_SKIP_CLEANUP 1
+# Sets capabilities for output caddy binary to be able to bind to privileged ports
+ENV XCADDY_SETCAP 1
 
 RUN apk update && \
     apk add --no-cache build-base wget git && \
