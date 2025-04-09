@@ -1,0 +1,30 @@
+# compose file is used by Truenas to use caddy to termindate TLS and proxy to ither containers
+networks:
+  ix-grafana_default:
+    external: True
+  ix-hass_default:
+    external: True
+  ix-mqtt_default:
+    external: True
+  ix-nxc_default:
+    external: True
+  ix-victoria_default:
+    external: True
+  local_88:
+    external: True
+services:
+  caddy:
+    container_name: caddy
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+    image: ghcr.io/mike-sirs/caddy-cloudflare:main
+    networks:
+      local_88:
+        ipv4_address: v4-ip
+        ipv6_address: v6-ip
+    volumes:
+      - /mnt/main-z/PV/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - /mnt/main-z/PV/caddy/data:/data
+      - /mnt/main-z/PV/caddy/config:/config
