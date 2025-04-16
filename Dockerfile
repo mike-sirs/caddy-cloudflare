@@ -12,9 +12,9 @@ RUN xcaddy version && \
 FROM alpine:edge
 
 RUN echo "net.core.rmem_max=7500000" > /etc/sysctl.conf && \
-    echo "net.core.wmem_max=7500000" >> /etc/sysctl.conf && \
+    echo "net.core.wmem_max=7500000" >> /etc/sysctl.conf
 
-COPY --from=caddy_builder /go/caddy /usr/bin/caddy
+COPY --from=caddy_builder --link /go/caddy /usr/bin/caddy
 
 WORKDIR /var/www/public
 
