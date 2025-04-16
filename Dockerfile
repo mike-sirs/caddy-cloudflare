@@ -9,13 +9,13 @@ RUN xcaddy version && \
     CGO_ENABLED=1 xcaddy build v${VAR_CADDY} \
     --with github.com/caddy-dns/cloudflare
 
-# FROM alpine:edge
+FROM alpine:edge
 
-# RUN echo "net.core.rmem_max=7500000" > /etc/sysctl.conf && \
-#     echo "net.core.wmem_max=7500000" >> /etc/sysctl.conf && \
+RUN echo "net.core.rmem_max=7500000" > /etc/sysctl.conf && \
+    echo "net.core.wmem_max=7500000" >> /etc/sysctl.conf && \
 
-# COPY --from=caddy_builder --link /go/caddy /usr/bin/caddy
+COPY --from=caddy_builder /go/caddy /usr/bin/caddy
 
-# WORKDIR /var/www/public
+WORKDIR /var/www/public
 
-# CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
