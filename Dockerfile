@@ -4,9 +4,9 @@ ENV VAR_XCADDY=0.4.4
 ENV VAR_CADDY=2.10.0-beta.4
 
 RUN apk update && \
-    apk add --no-cache build-base wget git && \
-    go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest && \
-    xcaddy version && \
+    apk add --no-cache build-base wget git
+RUN go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
+RUN xcaddy version && \
     CGO_ENABLED=1 xcaddy build v${VAR_CADDY} \
     --with github.com/caddy-dns/cloudflare
 
