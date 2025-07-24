@@ -1,14 +1,14 @@
 FROM golang:1.24-alpine AS caddy_builder
 
-ENV VAR_CADDY=2.10.0-beta.4
+ENV VAR_CADDY=2.10.0
 
 RUN apk update && \
     apk add --no-cache build-base wget git
 RUN go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 RUN xcaddy version && \
     CGO_ENABLED=1 xcaddy build v${VAR_CADDY} \
-    --with github.com/caddy-dns/cloudflare
-
+    # --with github.com/caddy-dns/cloudflare
+    --with github.com/libdns/libdns@master
 FROM alpine:edge
 
 RUN echo "net.core.rmem_max=7500000" > /etc/sysctl.conf && \
