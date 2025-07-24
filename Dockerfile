@@ -8,6 +8,7 @@ RUN go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 RUN xcaddy version && \
     CGO_ENABLED=1 xcaddy build v${VAR_CADDY} \
     --with github.com/caddy-dns/cloudflare@master
+    --with github.com/libdns/libdns@master
 FROM alpine:edge
 
 RUN echo "net.core.rmem_max=7500000" > /etc/sysctl.conf && \
