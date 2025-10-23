@@ -1,6 +1,6 @@
-FROM golang:1.24-alpine AS caddy_builder
+FROM golang:1.25.3-alpine3.22 AS caddy_builder
 
-ENV VAR_CADDY=2.10.0
+ENV VAR_CADDY=2.10.2
 
 RUN apk update && \
     apk add --no-cache build-base wget git
